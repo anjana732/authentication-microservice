@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
-const RefreshTokenSchema = mongoose.createSchema(
+const RefreshTokenSchema = new mongoose.Schema(
     {
         user: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: User,
+            ref: "User",
             required: true
         },
         token: {
@@ -12,7 +12,7 @@ const RefreshTokenSchema = mongoose.createSchema(
             required: true
         },
         expiresAt: {
-            type: date,
+            type: Date,
             required: true
         },
         isRevoked: {
@@ -20,7 +20,7 @@ const RefreshTokenSchema = mongoose.createSchema(
             default: false,
         },
     },{
-        timestamp: true
+        timestamps: true
     }
 )
 

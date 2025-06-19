@@ -1,24 +1,33 @@
-import logger from "../utils/logger";
-import User from "../models/user.model";
+import logger from "../utils/logger.js";
+import User from "../models/user.model.js";
 
-const signUpService = async (req, res) => {
-    try{
-        const {username, email, password} = req.body;
-        const existing = await User.findOne({email});
+const signUpService = async ({ username, email, password }) => {
+    try {
+        const existing = await User.findOne({ email });
 
-        if(existing){
-            logger.info(`User already Exist`);
-            return res.status(400).json({ message: 'User already exists' });
+        if (existing) {
+            logger.info(`User already exists`);
+            return { status: 400, body: { message: 'User already exists' } };
         }
 
-        const newUser = await User.create({username, email, password})
+        const newUser = await User.create({ username, email, password });
         logger.info(`New User Created`, newUser);
-        return res.status(201).json({message: 'User created successfully', user: newUser})
 
-    }catch(err){
+        return {
+            status: 201,
+            body: {
+                message: 'User created successfully',
+                user: {
+                    _id: newUser._id,
+                    username: newUser.username,
+                    email: newUser.email
+                }
+            }
+        };
+    } catch (err) {
         logger.error(`Signup error: `, err);
-        return res.status(500).json({error: `error creating user`})
+        return { status: 500, body: { error: `Error creating user` } };
     }
-}
+};
 
 export default signUpService;
