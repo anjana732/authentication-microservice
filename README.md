@@ -58,36 +58,31 @@ authentication-microservice/
 
 ## Installation
 
-# Clone the repository
+### Clone the repository
 
 ```bash
-git clone https://github.com/your-username/authentication-microservice.git
+git clone https://github.com/anjana732/authentication-microservice.git
 ```
-# Navigate into the project directory
+### Navigate into the project directory
 
 ```bash
 cd authentication-microservice
 ```
 
-# Install dependencies
+### Install dependencies
 
 ```bash
 npm install
 ```
 
-# Copy and configure environment variables
+### Copy and configure environment variables
 ```bash
 cp .env.example .env
 
 ```
 ## ▶️ Running the App
 
-# Start the server in development mode
-```bash
-npm run dev
-```
-
-# Start the server in production mode
+### Start the server
 ```bash
 npm start
 ```
