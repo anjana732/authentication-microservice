@@ -1,7 +1,7 @@
 import logger from "../utils/logger";
 import User from "../models/user.model";
 
-const signUp = async (req, res) => {
+const signUpService = async (req, res) => {
     try{
         const {username, email, password} = req.body;
         const existing = await User.findOne({email});
@@ -21,4 +21,4 @@ const signUp = async (req, res) => {
     }
 }
 
-export default signUp;
+export default signUpService;

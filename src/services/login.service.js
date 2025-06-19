@@ -3,7 +3,7 @@ import User from "../models/user.model";
 import { generateAccessToken, generateRefreshToken } from "../utils/generateTokens.util";
 import RefreshToken from "../models/refreshToken.model";
 
-const login = async (req, res) => {
+const loginService = async (req, res) => {
     try{
         const {email, password} = req.body;
 
@@ -63,4 +63,4 @@ const login = async (req, res) => {
     }
 }
 
-export default login;
+export default loginService;
